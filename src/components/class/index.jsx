@@ -33,20 +33,14 @@ class ProductTable extends Component {
 
 class Date extends Component {
     render() {
-        let date = [];
-        let prevDate = [Date];
-        const sort = data.forEach((elem, index) => {
-            if (elem.date !== prevDate) {
-                
-                date =  [...date, prevDate]
-            }
-            prevDate = elem.date
-            
+        var datesFilter = new Set([]);
+        data.forEach((elem) => {
+            datesFilter.add(elem.date)
         })
         
         return (
             <>
-                <TableBody date={date} />
+                <TableBody date = {Array.from(datesFilter)} />
             </>
         )
     }
@@ -62,6 +56,7 @@ class TableBody extends Component {
     }
 
     render() {
+        console.log(this.props.date);
         return (
             <>
                 <thead>
